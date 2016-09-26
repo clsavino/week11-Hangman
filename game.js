@@ -1,25 +1,30 @@
-var nodePackages = [
-	'twitter',
-	'spotify',
-	'browserify',
-	'grunt',
-	'gulp',
-	'mocha',
-	'bower',
-	'underscore',
-	'cheerio',
-	'passport',
-	'nodemailer',
-	'react',
-	'karma',
-	'angular'
-]
+var randomWord = function() { 
+	this.nodePackages = 
+			[
+			'twitter',
+			'spotify',
+			'browserify',
+			'grunt',
+			'gulp',
+			'mocha',
+			'bower',
+			'underscore',
+			'cheerio',
+			'passport',
+			'nodemailer',
+			'react',
+			'karma',
+			'angular'
+			];
+	this.word = '';
 
-function randomWord() {
+	this.chooseWord = function() {
 	var index = (Math.floor(Math.random()*14) + 1);
-	console.log(index);
-	var word = nodePackages[index];
-	console.log(nodePackages[index]);
+	this.word = this.nodePackages[index];
+	}
 }
 
-randomWord();
+// var myRandom = new randomWord();
+// myRandom.chooseWord();
+// console.log('after funct call', myRandom.word);
+module.exports = randomWord; 
