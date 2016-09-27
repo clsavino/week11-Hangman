@@ -1,34 +1,40 @@
+// the random word constructor is in game.js
 var randomWord = require('./game.js');
-
-// Creates the word with all underscores to display 
+// Invokes the randomWord generator in game.js to create the random word
+// Creates a string of all underscores to display to the user to begin the game
 // currentWord is the array that the correct letters are pushed into
 // displayWord is the string version that is displayed
-var hangmanWord = {
-	currentWord: [],
-	displayWord: [],
-	letterStr: '',
-	lettersLeft: 0,
-	nodeRandomWord: '',
+function HangmanWord(){
+	this.currentWord = [];
+	this.displayWord = '';
+	this.letterStr = '';
+	this.lettersLeft = 0;
+	this.nodeRandomWord = '';
 
-	gameRandomWord: function() {
+	this.makeRandomWord = function(){
 		this.gameRandomWord = new randomWord();
-		console.log('gameRandomWord',this.gameRandomWord);
 		this.gameRandomWord.chooseWord();
 		this.nodeRandomWord = this.gameRandomWord.word;
+		console.log('the random word is',this.nodeRandomWord);
 	},
-	
-	makeHangmanWord: function(){
+
+	this.makeHangmanWord = function(){
 		this.lettersLeft = this.nodeRandomWord.length;
 		for (var i = 0; i < this.nodeRandomWord.length; i++){
 			//Make an array with all Underscores the length of the random word
 			this.currentWord[i] = '_';
 		}
 		this.displayWord = this.currentWord.join(' ');
-		console.log('displayWord in letter.js ',this.displayWord);
+		//console.log('displayWord in letterConst.js ',this.displayWord);
 	}
-}
 
-hangmanWord.gameRandomWord();
-hangmanWord.makeHangmanWord();
+} //end of hangmanWord constructor
 
-module.exports = hangmanWord;
+
+var gameHangmanWord = new HangmanWord();
+
+gameHangmanWord.makeRandomWord();
+gameHangmanWord.makeHangmanWord();
+
+//module.exports = gameRandomWord;
+module.exports = gameHangmanWord;
