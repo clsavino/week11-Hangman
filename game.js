@@ -1,4 +1,4 @@
-var randomWord = function() { 
+var makeRandomWord = function() { 
 	this.nodePackages = 
 			[
 			'twitter',
@@ -16,15 +16,12 @@ var randomWord = function() {
 			'karma',
 			'angular'
 			];
-	this.word = '';
+	this.RandomWord = '';
 
 	this.chooseWord = function() {
 	var index = (Math.floor(Math.random()*14) + 1);
-	this.word = this.nodePackages[index];
+	this.RandomWord = this.nodePackages[index];
 	}
 }
 
-// var myRandom = new randomWord();
-// myRandom.chooseWord();
-// console.log('after funct call', myRandom.word);
-module.exports = randomWord; 
+module.exports = makeRandomWord; 
