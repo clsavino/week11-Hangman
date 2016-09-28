@@ -1,0 +1,23 @@
+{
+  "name": "week11hangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "inquirer": "^1.1.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clsavino/week11-Hangman.git"
+  },
+  "author": "Christi Savino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clsavino/week11-Hangman/issues"
+  },
+  "homepage": "https://github.com/clsavino/week11-Hangman#readme"
+}
