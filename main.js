@@ -1,37 +1,20 @@
-//var word = require('./word.js');
-var inquirer = require('inquirer');
-var makeRandomWord = require('./game.js');
 var HangmanWord = require('./letter.js');
-var userGuess;
+var Setup = require('./game.js');
+
 //log it to be sure the scope is correct and the module.exports and the require is correct
-var makeRandomWord = new makeRandomWord();
-makeRandomWord.chooseWord();
-var HangmanWord = new HangmanWord(makeRandomWord.RandomWord );
+
+var GameSetup = new Setup();
+//console.log(GameSetup);
+GameSetup.chooseWord();
+console.log('the random word ', GameSetup.RandomWord);
+//console.log(GameSetup);
+var HangmanWord = new HangmanWord(GameSetup.RandomWord );
 HangmanWord.makeHangmanWord();
-console.log('\nin main, makeRandWord.RandomWord', makeRandomWord.RandomWord );
-console.log('HangmanWord ',HangmanWord.displayWord); 
-console.log("\nLet's play Node Package Hangman. \nGuess a letter in one of the most popular Node packages ");
-console.log('Here is your word\n\n', HangmanWord.displayWord + '\n');
+console.log('nodeRandomWord ',HangmanWord.nodeRandomWord);
+console.log('displayWord ', HangmanWord.displayWord);
+// GameHangmanWord.makeHangmanWord(GameSetup.RandomWord);
+// console.log('the diplay word ', GameHangmanWord.nodeRandomWord);
 
-function prompt() {
-	inquirer.prompt([
 
-		// Here we create a basic text prompt.
-		{
-			type: "input",
-			message: "Enter a letter",
-			name: "letter"
-		}
-// Once we are done with all the questions... "then" we do stuff with the answers
-// In this case, we store all of the answers into a "user" object that inquirer makes for us. 
-	]).then(function (user) {
-		userGuess = user.letter;
-		console.log("\nYou entered " + userGuess);
-	})
-		.catch(function(e){
-		console.log(e);
-		console.log(e.stack);
-	})
-}	
-prompt();
+
 
