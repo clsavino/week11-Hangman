@@ -31,12 +31,11 @@ var Setup = function(){
 	};
 	this.printGreetings = function() {
 		console.log(this.greeting);
-		console.log('Here is your word\n\n' + HangmanWord.displayWord + '\n');
+		console.log('Here is your word\n\n' + this.HangmanWord.displayWord + '\n');
 	};
 	this.generateDisplayWord = function() {
 		this.HangmanWord = new HangmanWord(this.RandomWord )
 		this.HangmanWord.makeHangmanWord();
-		console.log('displayWord',this.HangmanWord.displayWord);
 		this.gameDisplayWord = this.HangmanWord.displayWord;
 
 	};
