@@ -1,7 +1,6 @@
-var HangmanWord = require('./letter.js');
-//console.log('in game.js,HangmanWord ',HangmanWord);
-
 var inquirer = require('inquirer');
+
+var HangmanWord = require('./letter.js');
 
 var Setup = function(){
 	this.nodePackages = 
@@ -22,23 +21,25 @@ var Setup = function(){
 		'angular'
 		];
 	this.RandomWord = '';
+	this.gameDisplayWord = '';
 	this.userGuess = '';
 	this.greeting = "\nLet's play Node Package Hangman. \nGuess a letter in one of the most popular Node packages ";
-	this.displayWordMsg = 'Here is your word\n\n', HangmanWord.displayWord + '\n';
-	this.chooseWord = function() {
+	
+	this.generateRandomWord = function() {
 		var index = (Math.floor(Math.random()*14) + 1);
 		this.RandomWord = this.nodePackages[index];
-	},
+	};
 	this.printGreetings = function() {
 		console.log(this.greeting);
-		console.log(this.displayWordMsg);
-	},
-	this.generateRandomWord = function() {
-		this.chooseWord();
-	},
+		console.log('Here is your word\n\n' + HangmanWord.displayWord + '\n');
+	};
 	this.generateDisplayWord = function() {
-		HangmanWord.makeHangmanWord();
-	}
+		this.HangmanWord = new HangmanWord(this.RandomWord )
+		this.HangmanWord.makeHangmanWord();
+		console.log('displayWord',this.HangmanWord.displayWord);
+		this.gameDisplayWord = this.HangmanWord.displayWord;
+
+	};
 	this.promptUser = function() {
 		inquirer.prompt([
 			// Here we create a basic text prompt.

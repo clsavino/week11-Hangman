@@ -1,7 +1,7 @@
 // Creates a string of all underscores to display to the user to begin the game
 // currentWord is the array that the correct letters are pushed into, displayWord is the string version that is displayed
 
-function HangmanWord(randomWord){
+var HangmanWord = function(randomWord) {
 	this.currentWord = [];
 	this.displayWord = '';
 	this.letterStr = '';
