@@ -2,9 +2,8 @@ var inquirer = require('inquirer');
 
 var HangmanWord = require('./letter.js');
 
-var Setup = function(){
-	this.nodePackages = 
-		[
+var Setup = {
+	nodePackages: [
 		'twitter',
 		'spotify',
 		'browserify',
@@ -19,36 +18,35 @@ var Setup = function(){
 		'react',
 		'karma',
 		'angular'
-		];
-	this.RandomWord = '';
-	this.gameDisplayWord = '';
-	this.userGuess = '';
-	this.greeting = "\nLet's play Node Package Hangman. \nGuess a letter in one of the most popular Node packages ";
+		],
+	RandomWord: '',
+	gameDisplayWord: '',
+	userGuess: '',
+	greeting: "\nLet's play Node Package Hangman. \nGuess a letter in one of the most popular Node packages ",
 	
-	this.generateRandomWord = function() {
+	generateRandomWord : function() {
 		var index = (Math.floor(Math.random()*14) + 1);
 		this.RandomWord = this.nodePackages[index];
-	};
-	this.printGreetings = function() {
+	},
+	printGreetings : function() {
 		console.log(this.greeting);
-		console.log('Here is your word\n\n' + this.HangmanWord.displayWord + '\n');
-	};
-	this.generateDisplayWord = function() {
-		this.HangmanWord = new HangmanWord(this.RandomWord )
+	},
+
+	generateDisplayWord : function() {
+		this.HangmanWord = new HangmanWord(this.RandomWord)
 		this.HangmanWord.makeHangmanWord();
 		this.gameDisplayWord = this.HangmanWord.displayWord;
+		console.log('Here is your word\n\n' + this.HangmanWord.displayWord + '\n');
+	},
 
-	};
-	this.promptUser = function() {
+	promptUser : function() {
 		inquirer.prompt([
-			// Here we create a basic text prompt.
 		{
 			type: "input",
 			message: "Enter a letter",
 			name: "letter"
 		}
-		// Once we are done with all the questions... "then" we do stuff with the answers
-		// In this case, we store all of the answers into a "user" object that inquirer makes for us. 
+ 
 		]).then(function (user) {
 			this.userGuess = user.letter;
 			console.log("\nYou entered " + this.userGuess);
@@ -58,8 +56,6 @@ var Setup = function(){
 			console.log(e.stack);
 		})
 	}	
-} //end of Setup
-
-
+}; //end of Setup
 
 module.exports = Setup; 

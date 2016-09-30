@@ -1,15 +1,21 @@
-
 var Setup = require('./game.js');
+var GameSetup = Setup;
 
-//log it to be sure the scope is correct and the module.exports and the require is correct
+// var Setup = require('./game.js');
+// var GameSetup = new Setup();
 
-var GameSetup = new Setup();
-//console.log('GameSetup',GameSetup);
+
 GameSetup.generateRandomWord();
 //console.log('GameSetup',GameSetup);
 //console.log('GameSetup.RandomWord', GameSetup.RandomWord);
+
+GameSetup.printGreetings();
+
 GameSetup.generateDisplayWord();
 //console.log('GameSetup',GameSetup);
 //console.log('GameSetup.gameDisplayWord',GameSetup.gameDisplayWord);
 
-GameSetup.printGreetings();
+var GameCheckGuesses = require('./word.js');
+var GameCheckGuesses = new GameCheckGuesses(GameSetup.RandomWord);
+
+GameSetup.promptUser();
