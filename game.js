@@ -13,11 +13,19 @@ var Setup = {
 		'nodemailer',
 		'react',
 		'karma',
-		'angular'
+		'angular',
+		'request',
+		'chalk',
+		'express',
+		'async',
+		'debug',
+		'moment',
+		'bluebird',
+		'color'
 		],
 	RandomWord: '',
 	gameDisplayWord: '',
-	greeting: "\n  Let's play Node Package Hangman. \nGuess a letter in one of the most popular Node packages ",
+	greeting: "\n  Let's play Node Package Hangman. \n  Guess a letter in one of the most popular Node packages ",
 	
 	generateRandomWord : function() {
 		var index = (Math.floor(Math.random()*14) + 1);

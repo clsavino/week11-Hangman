@@ -27,6 +27,7 @@ var promptUser = function() {
 		} else {
 			gameOver = GameCheckGuesses.updateGuesses(userGuess);
 			console.log('\n  Oops, Sorry not a good choice!');
+
 		}
 		if (GameHangmanWord.lettersLeft <=0) {
 			gameOver = true;
@@ -35,7 +36,8 @@ var promptUser = function() {
 			console.log('\n  ' + displayWord + '\n');
 			promptUser();
 		} else {
-			console.log('  Game Over!');
+			console.log('\n  Game Over!');
+			console.log('\n  Your word was\n  ' + GameSetup.RandomWord);
 		}
 
 	}) //end of .then
