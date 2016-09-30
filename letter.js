@@ -8,6 +8,7 @@ var HangmanWord = function(randomWord) {
 	this.lettersLeft = 0;	
 	this.userGuess = '';
 	this.alreadyUsed = [];
+	this.gameOver = false;
 	this.nodeRandomWord = randomWord;
 	//Make an array with all Underscores the length of the random word
 	this.makeHangmanWord = function(){
@@ -16,6 +17,7 @@ var HangmanWord = function(randomWord) {
 			this.currentWord[i] = '_';
 		}
 		this.displayWord = this.currentWord.join(' ');
+		return this.displayWord;
 	};
 
 	this.updateHangmanWord = function(userGuess) {
@@ -29,14 +31,16 @@ var HangmanWord = function(randomWord) {
 		    	
 		        if (this.nodeRandomWord[i] === this.userGuess) {
 		        	this.currentWord[i] = this.userGuess;
-		        	this.lettersLeft = this.lettersLeft - 1;
+		        	this.lettersLeft --;
 		        }
 		    }
 		}
 	 	this.displayWord = this.currentWord.join(" ");
+	 	if (this.lettersLeft <=0) {
+	 		this.gameOver = true;
+	 	}
 	 	return this.displayWord;
 	};
-
 } //end of hangmanWord constructor
 
 module.exports = HangmanWord;

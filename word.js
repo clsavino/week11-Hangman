@@ -1,37 +1,37 @@
-var HangmanWord = require('./letter.js');
-
 var CheckGuesses = function(randomWord) {
 	this.RandomWord = randomWord;
 	this.userGuess = '';
 	this.usedLetters = [];
-	this.usedIndex = 0;
 	this.remainingGuesses = 7;
 	this.gameOver = false;
+	this.letterInWord = false;
 
 	this.checkTheLetter = function(userGuess) {
+		this.userGuess = userGuess;
 		var pos = this.RandomWord.indexOf(this.userGuess);
 		if (pos >-1) {
-			this.HangmanWord.updateWord(this.userGuess);
+			letterInWord = true;
 		} else {
-			this.CheckGuesses.updateGuesses();
+			letterInWord = false;
 		}
+		return letterInWord;
 	}; 
 
 	this.updateGuesses = function(userGuess) {
+		this.userGuess = userGuess;
 		var	pos = this.usedLetters.indexOf(this.userGuess);
 	    // if userGuess is not in usedLetters array then add it in
 		if (pos === -1) {
-			this.usedLetters[this.usedIndex] = this.userGuess;// Put userGuess in usedLetters array
-			this.usedIndex = this.usedIndex + 1;// update #of trys 
-			this.remainingGuesses = this.remainingGuesses - 1; //decrement number of guesses they have left
+			this.usedLetters.push(this.userGuess); 
+			this.remainingGuesses --; 
 		}
-
 		//check to see if used all 7 guesses
 		if (this.remainingGuesses <= 0) {
 			this.gameOver = true;
 		}
-	} // end of updateGuesses
-}
+		return this.gameOver;
+	}; // end of updateGuesses
+} //end of CheckGuesses
 
 module.exports = CheckGuesses;
 	
