@@ -25,10 +25,10 @@ var Setup = {
 		],
 	RandomWord: '',
 	gameDisplayWord: '',
-	greeting: "\n  Let's play Node Package Hangman. \n  Guess a letter in one of the most popular Node packages ",
+	greeting: "\n  Guess a letter in one of the most popular Node packages ",
 	
 	generateRandomWord : function() {
-		var index = (Math.floor(Math.random()*14) + 1);
+		var index = (Math.floor(Math.random()*22) + 1);
 		this.RandomWord = this.nodePackages[index];
 	},
 

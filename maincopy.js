@@ -1,4 +1,3 @@
-
 var inquirer = require('inquirer');
 var Setup = require('./game.js');
 var HangmanWord = require('./letter.js');
@@ -43,7 +42,7 @@ var promptUser = function() {
 	}) // end of inquirer.prompt
 } //end of loop
 
-function setup() {
+//function setup() {
 GameSetup.generateRandomWord();
 
 GameSetup.printGreetings();
@@ -55,8 +54,8 @@ console.log('\n  GameHangmanWord',GameHangmanWord);
 
 var GameCheckGuesses = new CheckGuesses(GameSetup.RandomWord);
 console.log('\n  Here is your word\n\n  ' + displayWord + '\n');
-}
+//}
 
-setup();
+//setup();
 promptUser();
 //console.log('\n\n  Do you want to play Node Package Hangman?');
