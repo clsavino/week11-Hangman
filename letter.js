@@ -1,4 +1,4 @@
-// Creates a string of all underscores to display to the user to begin the game - this is referred to as HangmanWord
+// Creates a string of all underscores to display to the user at the beginning of the game - this is referred to as HangmanWord
 // currentWord is the array that the correct letters are pushed into 
 // displayWord is the string version that is displayed
 
@@ -20,6 +20,8 @@ var HangmanWord = function(randomWord) {
 		return this.displayWord;
 	};
 
+	// Using the letter the user guessed as an argument, this function checks to see if the letter has already been used 
+	// if not then it updates currentWord to contain all the instances of that letter in the word replacing blanks with the letter in the correct position
 	this.updateHangmanWord = function(userGuess) {
 		this.userGuess = userGuess;
 		// Put userGuess in alreadyUsed array
@@ -35,7 +37,9 @@ var HangmanWord = function(randomWord) {
 		        }
 		    }
 		}
+		// make a string with all letters and blanks separated by spaces to display the partially guessed random word
 	 	this.displayWord = this.currentWord.join(" ");
+	 	// if all letters have been guessed correctly then game is over
 	 	if (this.lettersLeft <=0) {
 	 		this.gameOver = true;
 	 	}
